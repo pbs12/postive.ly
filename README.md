@@ -1,28 +1,3 @@
-# HackDuke2019
+# positive.ly
 
-## Setting up Docker
-
-Create a Tensorflow (or whatever) base image. The `-p 5000:5000` means the container will broadcast its webpage to port 5000 on localhost.
-
-    docker run -it -p 5000:5000 tensorflow/tensorflow:latest
-
-Once inside the interactive Tensorflow container, install Flask and a text editor.
-
-    apt update && apt install vim
-    pip install flask
-
-Create a root for the Flask server.
-
-    from flask import Flask
-    app = Flask(__name__)
-
-    @app.route("/")
-    def home():
-        return "Hello World!"
-
-    if __name__ == "__main__":
-        # Choice of host must be 0.0.0.0, port must match the chosen -p
-        app.run(host="0.0.0.0", port="5000")
-
-Access the Flask server by going to (e.g.) 10.194.223.134:5000.
-# postive.ly
+Positive.ly, a three platform means of dynamically tracking mood/emotion and encouraging positive thought via cognitive behavioral therapy techniques clinically proven to combat symptoms of depression (CBT). Our companion android app created via Java and XML collects user typed text and via JSON and send them privately to our multithread  Flask server where the data is concurrently stored in a Mongo database and ran through a sentiment analysis machine learning model trained on IMDB review data. The emotion data is then dynamically graphed on the website created from scratch using HTML, JS, and CSS which the user access daily to do  (CBT) techniques like a gratitude journal and positive word showcase. See the Devpost at https://dvp.st/2QRyDZg.
